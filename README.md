@@ -1,24 +1,25 @@
-Fullstory dbt Metrics Package
+# Fullstory demo dbt Metrics Package
 
 What does this dbt package do?
-This package provides pre-built metrics for Fullstory demo data.
 
 This package enables you to access some metrics on top of Fullstory digital experience data.
 
-Metrics
+# Metrics
 This package contains transformed models built on top of Fullstory data. The metrics offered by this package are described below
 
-metric	                                            description
-fullstory_productPurchases	            Weekly purchases of a product.
-fullstory_productThoughtfullVisits  	  Weekly visits of a product webpage where a customer spent significant amount of time.
-fullstory_revenueAdViewPurchases	      Weekly Revenue from products which were bought after viewing company ads.
-fullstory_reviewCheckProduct	          Weekly tally of products for which reviews were checked.
-fullstory_totalCouponPurchases	        Weekly purchases of products in a specified price range done with coupons.
-fullstory_totalItemsInCart	            Weekly count of products that are saved for later.
-fullstory_totalRevenue	                Weekly revenue from sales.
-fullstory_visitsOnProduct	              Weekly count of webpage visits of a particular product.
 
-How do I use this dbt package?
+| **metric**                          | **description**                                                                                                                                                                                                                              |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [fullstory_productPurchases](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L39-L53)    | Weekly purchases of a product.                
+| [fullstory_productThoughtfullVisits](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L74-L88)      | Weekly visits of a product webpage where a customer spent significant amount of time.                         
+| [fullstory_revenueAdViewPurchases](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L125-L142)    |  Weekly Revenue from products which were bought after viewing company ads.
+| [fullstory_reviewCheckProduct](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L90-L104)    |  Weekly tally of products for which reviews were checked.
+| [fullstory_totalCouponPurchases](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L106-L123)    |         Weekly purchases of products in a specified price range done with coupons.                                                               |
+| [fullstory_totalItemsInCart](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L55-L72)    |  Weekly count of products that are saved for later.                                     |
+| [fullstory_totalRevenue](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L12-L26)    | Weekly revenue from sales.                                                         |
+| [fullstory_visitsOnProduct](https://github.com/GarvitSadhwani/dbt_fullstory_demo/blob/main/models/schema.yml#L28-L37)    |Weekly count of webpage visits of a particular product.               |
+
+# How do I use this dbt package?
 
 Step 1: Prerequisites
 To use this dbt package, you must have the following:
@@ -38,7 +39,7 @@ packages:
 Step 3: Define database and schema variables
 Please add the following configuration to your dbt_project.yml file:
 
-# dbt_project.yml
+dbt_project.yml
 
 ...
 config-version: 2
