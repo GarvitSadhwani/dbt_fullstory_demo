@@ -21,25 +21,27 @@ This package contains transformed models built on top of Fullstory data. The met
 
 # How do I use this dbt package?
 
-Step 1: Prerequisites
+## Step 1: Prerequisites
 To use this dbt package, you must have the following:
 
 -At least one Fullstory connector syncing data into your destination.
 -A Snowflake destination.
 
-Step 2: Install the package
+## Step 2: Install the package
 Check dbt Hub for the latest installation instructions, or read the dbt docs for more information on installing packages.
 
 Include in your packages.yml
 
+```
 packages:
   - git: "https://github.com/GarvitSadhwani/dbt_fullstory_demo.git"
     revision: v0.1.1
-    
-Step 3: Define database and schema variables
+```   
+## Step 3: Define database and schema variables
 Please add the following configuration to your dbt_project.yml file:
 
-dbt_project.yml
+```yml
+# dbt_project.yml
 
 ...
 config-version: 2
@@ -48,4 +50,7 @@ vars:
   fullstory_source:
     fullstory_database: your_database_name
     fullstory_schema: your_schema_name
+```
+
+
 For additional configurations for the source models, please visit the Fullstory source package.
