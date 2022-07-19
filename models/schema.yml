@@ -1,0 +1,142 @@
+version: 2
+ 
+models:
+  - name: stg_sessions
+    columns: 
+      - name: bought
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+ 
+metrics:
+  - name: totalRevenue
+    label: total revenue
+    model: ref('stg_sessions')
+    description: "Total revenue"
+ 
+    type: sum
+    sql: price
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+    filters:
+      - field: BOUGHT
+        operator: '='
+        value: 'true'
+ 
+  - name: visitsOnProduct
+    label: prodVisits
+    model: ref('stg_sessions')
+    description: "total visits on the webpage of a particular product"
+ 
+    type: count
+    sql: product_name
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+  - name: productPurchases
+    label: prodPurchases
+    model: ref('stg_sessions')
+    description: "total purchases of a particular product"
+ 
+    type: count
+    sql: product_name
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+    filters:
+      - field: BOUGHT
+        operator: '='
+        value: 'true'
+ 
+  - name: itemsInCart
+    label: leftInCart
+    model: ref('stg_sessions')
+    description: "total items left in carts of customers"
+ 
+    type: count
+    sql: product_name
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+    filters:
+      - field: SAVED
+        operator: '='
+        value: 'true'
+      - field: BOUGHT
+        operator: '='
+        value: 'false'  
+ 
+  - name: productThoughtfullVisits
+    label: productThoughtfullVisits
+    model: ref('stg_sessions')
+    description: "total vists of a product webpage where customers spent significant time"
+ 
+    type: count
+    sql: product_name
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+    filters:
+      - field: DURATION_ON_WEBPAGE
+        operator: '>='
+        value: '7'
+ 
+  - name: reviewCheckProduct
+    label: prodReviewCheck
+    model: ref('stg_sessions')
+    description: "total vists to review section of a particular product"
+ 
+    type: count
+    sql: product_name
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+    filters:
+      - field: reviews
+        operator: '='
+        value: 'true'
+ 
+  - name: totalCouponPurchases
+    label: totalCouponPurchases
+    model: ref('stg_sessions')
+    description: "total purchases in a price range with coupons"
+ 
+    type: count
+    sql: product_name
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+    filters:
+      - field: checked_coupons
+        operator: '='
+        value: 'true'
+      - field: bought
+        operator: '='
+        value: 'true'
+ 
+  - name: revenueAdViewPurchases
+    label: revenueAdViewPurchases
+    model: ref('stg_sessions')
+    description: "revenue from purchases of products in specified price range where product ads were viewed"
+ 
+    type: sum
+    sql: price
+ 
+    timestamp: visited_on
+    time_grains: [day, week]
+ 
+    filters:
+      - field: ad_viewed
+        operator: '='
+        value: 'true'
+      - field: bought
+        operator: '='
+        value: 'true'
