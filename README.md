@@ -32,7 +32,7 @@ Check dbt Hub for the latest installation instructions, or read the dbt docs for
 
 Include in your packages.yml
 
-```
+```yaml
 packages:
   - git: "https://github.com/GarvitSadhwani/dbt_fullstory_demo.git"
     revision: v0.1.1
