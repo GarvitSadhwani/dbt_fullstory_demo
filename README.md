@@ -37,20 +37,3 @@ packages:
   - git: "https://github.com/GarvitSadhwani/dbt_fullstory_demo.git"
     revision: v0.1.1
 ```   
-## Step 3: Define database and schema variables
-Please add the following configuration to your dbt_project.yml file:
-
-```yml
-# dbt_project.yml
-
-...
-config-version: 2
-
-vars:
-  fullstory_source:
-    fullstory_database: your_database_name
-    fullstory_schema: your_schema_name
-```
-
-
-For additional configurations for the source models, please visit the Fullstory source package.
